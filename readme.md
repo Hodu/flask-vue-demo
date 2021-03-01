@@ -28,31 +28,8 @@ http://127.0.0.1:5000/api/v1.0/
 ```
 
 ### create table
-```sql
-CREATE TABLE `base_user` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'pk',
-  `username` varchar(60) NOT NULL DEFAULT '' COMMENT '用户名',
-  `password_hash` varchar(128) NOT NULL DEFAULT '' COMMENT '密码',
-  `mobile` varchar(11) NOT NULL DEFAULT '' COMMENT '手机',
-  `avatar_url` varchar(255) NOT NULL DEFAULT '' COMMENT '头像',
-  `create_time` datetime COMMENT '创建时间',
-  `update_time` datetime COMMENT '更新时间',
-  `is_delete` int NOT NULL DEFAULT '0' COMMENT '是否删除，0否，1是',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-CREATE TABLE `learn_plan` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT 'pk',
-  `content` varchar(255) NOT NULL DEFAULT '' COMMENT '内容',
-  `author_id` bigint unsigned NOT NULL COMMENT '用户id',
-  `expect_finish_time` datetime DEFAULT NULL COMMENT '期望完成时间',
-  `actual_finish_time` datetime DEFAULT NULL COMMENT '实际完成时间',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  `is_delete` int NOT NULL DEFAULT '0' COMMENT '是否删除，0否，1是',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+```
+见doc/sql/db.sql 和 change.sql
 ```
 
 
