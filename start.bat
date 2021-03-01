@@ -1,3 +1,3 @@
-set FLASK\_ENV=development
-set FLASK\_APP=manage.py
+set FLASK_ENV=development
+set  FLASK_APP=manage.py
 flask run -p 8001

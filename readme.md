@@ -1,5 +1,20 @@
 ### 参考[跟老司机学 Flask](https://www.kancloud.cn/airvip/airvip-20201224/2095207)
 
+### create venv
+```shell
+# python -m venv venv
+
+# source venv/bin/activate
+or windows 执行:
+# venv\Scripts\activate
+
+```
+
+### create log file
+```shell
+在项目目录下创建logs文件夹，并创建log文件
+```
+
 ### start project
 ```
 mac/linux 系统运行 start.sh
@@ -22,6 +37,7 @@ CREATE TABLE `base_user` (
   `avatar_url` varchar(255) NOT NULL DEFAULT '' COMMENT '头像',
   `create_time` datetime COMMENT '创建时间',
   `update_time` datetime COMMENT '更新时间',
+  `is_delete` int NOT NULL DEFAULT '0' COMMENT '是否删除，0否，1是',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
