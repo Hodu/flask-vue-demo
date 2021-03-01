@@ -1,12 +1,9 @@
+### 参考[跟老司机学 Flask](https://www.kancloud.cn/airvip/airvip-20201224/2095207)
+
 ### start project
 ```
-# 以开发模式运行
-$ export FLASK\_ENV=development
-
-# 指定入口文件
-$ export FLASK\_APP=manage.py
-
-$ flask run
+mac/linux 系统运行 start.sh
+windows 系统运行 start.bat
 ```
 
 ### open url: http://127.0.0.1:5000/api/v1.0/
