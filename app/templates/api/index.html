@@ -1,0 +1,9 @@
+{% extends "api/base.html" %}
+{% block title %}首页{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1 id="main-color">Hello {{ data.name }} - {{ data.version }} !!!</h1>
+    <p>{{ ''|d('默认值', true) }}</p>
+{% endblock %}

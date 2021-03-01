@@ -1,0 +1,28 @@
+{% extends "api/base.html" %}
+{% block title %}用户列表{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="user-detail">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>手机</th>
+            </tr>
+            <tr class="user-item">
+            {% for user in users %}
+                <td><a href="user2/{{ user.user_id }}">{{ user.user_id }}</a></td>
+                <td>{{ user.username | capitalize }}</td>
+                <td>{{ user.mobile }}</td>
+            {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <div>
+        {% for item in ['python','airvip','阿尔维奇'] %}
+            {{loop.index}}   {{ item }}  {{ loop.cycle('python', 'php', 'java') }}
+        {% endfor %}
+    </div>
+{% endblock %}

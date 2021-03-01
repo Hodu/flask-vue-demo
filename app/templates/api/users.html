@@ -1,0 +1,14 @@
+{% extends "api/base.html" %}
+{% block title %}用户列表{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <ul id="navigation">
+        <p>{{ users.length }}</p>
+        <p>{{ users |length }}</p>
+    {% for user in users %}
+        <li><a href="user2/{{ user.user_id }}">{{ user.username }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

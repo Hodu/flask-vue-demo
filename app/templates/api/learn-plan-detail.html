@@ -1,0 +1,21 @@
+{% extends "api/base.html" %}
+{% block title %}用户列表{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <div class="learn-plan-detail">
+        <p>{{ learns.length }}</p>
+        <p>{{ learns |length }}</p>
+        <div class="learn-plan-item">
+            {% for learn in learns %}
+                <p>id:{{ learn.id }}</a></p>
+                <p>标题:{{ learn.title | capitalize }}</p>
+                <p>内容:<textarea>{{ learn.content }}</textarea></p>
+                <p>作者:<a href="user2/{{ learn.user_id }}">{{ learn.username }}</a></p>
+                <p>期望完成时间: {{ learn.expect_finish_time }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

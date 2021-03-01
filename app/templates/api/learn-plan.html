@@ -1,0 +1,14 @@
+{% extends "api/base.html" %}
+{% block title %}学习计划列表{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <ul id="navigation">
+        <p>{{ learns.length }}</p>
+        <p>{{ learns |length }}</p>
+    {% for learn in learns %}
+        <li><a href="learn-plan/{{ learn.id }}">{{ learn.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

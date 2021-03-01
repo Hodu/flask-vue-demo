@@ -1,0 +1,19 @@
+#content {
+
+}
+
+#footer {
+    position: absolute;
+    top: 95%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.user-detail {
+    font-size: 14px;
+    margin: 10px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

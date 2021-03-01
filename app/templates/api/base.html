@@ -1,0 +1,22 @@
+<!--Jinja 模板继承-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    {% block head %}
+    <title>{% block title %}{% endblock %}-Flask</title>
+    <style>
+        #main-color {color: #ff0000;}
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    {% endblock %}
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2021.
+        {% endblock %}
+    </div>
+</body>
+</html>
