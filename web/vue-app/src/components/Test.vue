@@ -2,15 +2,19 @@
   <div>
     <span>{{ serverResponse }} </span>
     <button @click="getData">GET DATA</button>
+    <Source />
   </div>
 </template>
 
 <script>
 import { getMsg } from '@/request/test';
+import Source from "@/components/Source";
 
 export default {
   name: "Test",
-  data: function () {
+  // eslint-disable-next-line vue/no-unused-components
+  components: { Source },
+  data() {
     return {
       serverResponse: 'resp'
     }
