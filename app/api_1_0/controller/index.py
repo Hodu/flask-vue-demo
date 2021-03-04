@@ -1,6 +1,6 @@
 from app.api_1_0 import bp
 from app.tasks.compute.tasks import mycomputer
-from flask import render_template, current_app
+from flask import render_template, current_app, jsonify
 
 
 @bp.route('/', methods=['GET'])
@@ -61,3 +61,10 @@ def jisuan():
     mycomputer.delay(9)
     return 'ok \n'
 
+
+@bp.route('/msg', methods=['GET', 'POST'])
+def home():
+    response = {
+        'msg': 'Hello, Python !'
+    }
+    return jsonify(response)
