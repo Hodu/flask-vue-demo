@@ -38,9 +38,13 @@ see doc/sql/db.sql and change.sql
 ```
 
 ---
+### init web project
+```shell script
+cd web/vue-app
+yarn install
+```
 ### start web project
 ```shell
-cd web/vue-app
 yarn serve
 
 ```
