@@ -12,7 +12,6 @@ import Source from "@/components/Source";
 
 export default {
   name: "Test",
-  // eslint-disable-next-line vue/no-unused-components
   components: { Source },
   data() {
     return {
