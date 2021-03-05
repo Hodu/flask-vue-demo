@@ -1,15 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <Test />
+  <User />
 </template>
 
 <script>
-import Test from './components/Test.vue'
+import Test from '@/components/Test.vue'
+import User from "@/page/User";
 
 export default {
   name: 'App',
   components: {
-    Test
+    Test,
+    User
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <span>{{ serverResponse }} </span>
-    <button @click="getData">GET DATA</button>
+    <el-button @click="getData" round>GET DATA</el-button>
     <Source />
   </div>
 </template>
