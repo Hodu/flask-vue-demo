@@ -1,4 +1,5 @@
 <template>
+  <div>>
   <el-row>
     <el-button @click="getUser()" plain>获取用户信息</el-button>
     <el-button @click="clear()" plain>清除</el-button>
@@ -29,7 +30,8 @@
         label="更新时间">
       </el-table-column>
     </el-table>
-  </template>
+  </div>
+</template>
 
 <script>
   import { getUsers } from "../request/user"
