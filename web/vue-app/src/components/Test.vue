@@ -2,17 +2,19 @@
   <div>
     <span>{{ serverResponse }} </span>
     <el-button @click="getData" round>GET DATA</el-button>
-    <Source />
+    <!-- <Source /> -->
   </div>
 </template>
 
 <script>
 import { getMsg } from '@/request/test';
-import Source from "@/components/Source";
+// import Source from "@/components/Source";
 
 export default {
   name: "Test",
-  components: { Source },
+  components: {
+    //  Source
+  },
   data() {
     return {
       serverResponse: 'resp'

@@ -42,12 +42,21 @@
         users: [],
       }
     },
+
+    watch:{
+      showCreate(val){
+        if(val){
+          this.createUserOper = "隐藏创建用户"
+        }else{
+          this.createUserOper = "创建用户"
+        }
+      }
+    },
     methods: {
       getUser() {
         console.log("=========> getUser")
         let that = this
         getUsers().then(function (response) {
-          console.log("======>", response)
           that.users = response;
         }).catch(function (exp) {
           console.log("========> e ", exp)
