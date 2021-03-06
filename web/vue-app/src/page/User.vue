@@ -1,5 +1,5 @@
 <template>
-  <div>>
+  <div>
   <el-row>
     <el-button @click="getUser()" plain>获取用户信息</el-button>
     <el-button @click="clear()" plain>清除</el-button>
