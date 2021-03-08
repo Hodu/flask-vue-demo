@@ -3,7 +3,7 @@ const publicPath = process.env.VUE_APP_BASE
 // 设置端口
 const port = process.env.DEV_PORT
 
-const backend_url =  process.env.BACKEND_URL
+const backend_url = process.env.BACKEND_URL
 
 module.exports={
     devServer:{
