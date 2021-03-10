@@ -3,6 +3,7 @@
   <el-row>
     <el-button @click="getUser()" plain>获取用户信息</el-button>
     <el-button @click="clear()" plain>清除</el-button>
+    <el-button @click="create()" plain >{{createUserOper}}</el-button>
   </el-row>
   <el-table
       :data="users"
@@ -30,17 +31,27 @@
         label="更新时间">
       </el-table-column>
     </el-table>
+
+    <UserCreate :show="showCreate" @createdUser="createdUser" />
   </div>
 </template>
 
 <script>
-  import { getUsers } from "../request/user"
+  import { getUsers } from "@/request/user"
+  import UserCreate from "@/components/UserCreate";
+
   export default {
     name: "User",
     data() {
       return {
         users: [],
+
+        showCreate: false,
+        createUserOper: "创建用户",
       }
+    },
+    components:{
+      UserCreate,
     },
 
     watch:{
@@ -54,8 +65,7 @@
     },
     methods: {
       getUser() {
-        console.log("=========> getUser")
-        let that = this
+        let that = this;
         getUsers().then(function (response) {
           that.users = response;
         }).catch(function (exp) {
@@ -64,6 +74,16 @@
       },
       clear() {
         this.users = [];
+      },
+      create(){
+        this.showCreate = !this.showCreate
+        this.createUserOper = this.showCreate ? "隐藏创建用户" : "创建用户"
+      },
+
+      createdUser(value){
+        this.showCreate = false
+        this.users.push(value)
+        // 获取users
       }
     }
   }
