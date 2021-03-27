@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <el-form v-if="show" :model="user" ref="user" :rules="rules">
+    <div class="popup-box" v-if="show">
+        <el-form :model="user" ref="user" :rules="rules">
             <el-form-item
                 prop="username"
                 label="姓名"
@@ -77,8 +77,20 @@ export default {
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-    
     }
 
 }
 </script>
+<style>
+  .popup-box{
+
+    position: absolute;
+    width: 500px;
+    background: #f7f7f7;
+    padding: 10px;
+    z-index: 999;
+    top: 40%;
+    left: 30%;
+
+  }
+</style>

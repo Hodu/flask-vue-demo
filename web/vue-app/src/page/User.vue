@@ -32,8 +32,8 @@
       </el-table-column>
     </el-table>
 
-    <UserCreate :show="showCreate" @createdUser="createdUser" />
   </div>
+  <UserCreate :show="showCreate" @createdUser="createdUser" />
 </template>
 
 <script>
