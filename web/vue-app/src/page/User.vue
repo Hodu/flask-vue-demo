@@ -31,9 +31,16 @@
         label="更新时间">
       </el-table-column>
     </el-table>
+    <div>
+      <ul>
+        <li v-for="item in arr" :key="item">
+          <span v-bind:title="message+'----by----'+item.age">{{item.name}} ===== {{item.age}}</span>
+        </li>
+      </ul>
+    </div>
 
   </div>
-  <UserCreate :show="showCreate" @createdUser="createdUser" />
+  <UserCreate :show="showCreate" @createdUser="createdUser" @cancel="cancel2" :arr="arr"/>
 </template>
 
 <script>
@@ -48,6 +55,17 @@
 
         showCreate: false,
         createUserOper: "创建用户",
+        arr:[
+            {
+              "name":"a",
+              "age":1
+            },
+            {
+              "name":"b",
+              "age":2
+            },
+        ],
+        message:"hello"
       }
     },
     components:{
@@ -84,7 +102,12 @@
         this.showCreate = false
         this.users.push(value)
         // 获取users
+      },
+      cancel2(value){
+        console.log("====> cancel val: ", value)
+        this.showCreate = value;
       }
+
     }
   }
 </script>

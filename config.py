@@ -3,7 +3,7 @@ class Config(object):
     SECRET_KEY = "AIRVip123456airvip"
 
     # 数据库配置
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:123123@127.0.0.1:3306/test"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root@127.0.0.1:3306/test"
     # 如果设置成 True (默认),Flask-SQLAlchemy 将会追踪对象的修改并且发送信号,需要额外的内存。
     # 如果不必要，可以禁用。
     SQLALCHEMY_TRACK_MODIFICATIONS = True

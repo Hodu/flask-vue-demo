@@ -1,17 +1,23 @@
 <template>
-    <div class="popup-box" v-if="show">
+    <div class="popup-box" v-if="popupShow">
+        <div class="header" @click="close()">
+          <div class="close"></div>
+        </div>
+        <div class="header">
+          <li v-for="item in arr" :key="item">
+            <span>{{item.name}} == {{item.age}}</span>
+          </li>
+        </div>
         <el-form :model="user" ref="user" :rules="rules">
             <el-form-item
                 prop="username"
                 label="姓名"
-
             >
             <el-input v-model="user.username"></el-input>
             </el-form-item>
              <el-form-item
                 prop="mobile"
                 label="手机"
-
             >
             <el-input v-model="user.mobile"></el-input>
             </el-form-item>
@@ -32,11 +38,12 @@ export default {
         type: Boolean,
         default: false,
       },
-
+      arr: Array,
     },
     watch:{
-      show(val){
-        console.log("+======================show: ", val)
+      show(val, oldVal){
+        console.log("+======================show: ", val, oldVal)
+        this.popupShow = val;
       }
     },
     data() {
@@ -45,6 +52,7 @@ export default {
           username: '',
           mobile: ''
         },
+        popupShow: false,
 
         rules:{
           username:[
@@ -77,12 +85,21 @@ export default {
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
+      close(){
+        console.log("close, ", this.popupShow)
+        console.log("close, arr = ", this.$props.arr)
+        this.popupShow = false;
+        this.$emit("cancel", false)
+        console.log("close, 2", this.$props.show)
+        this.$props.arr[0] = {"name":"c", "age":3}
+
+      },
     }
 
 }
 </script>
-<style>
-  .popup-box{
+<style lang="less" scoped>
+  .popup-box {
 
     position: absolute;
     width: 500px;
@@ -92,5 +109,18 @@ export default {
     top: 40%;
     left: 30%;
 
+    .header {
+      height: 20px;
+      .close {
+        color: #444;
+        width: 20px;
+        height: 20px;
+        background: red;
+        float: right;
+        &::before{
+          content: "X";
+        }
+      }
+    }
   }
 </style>
