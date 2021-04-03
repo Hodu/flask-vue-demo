@@ -4,6 +4,7 @@
     <el-button @click="getUser()" plain>获取用户信息</el-button>
     <el-button @click="clear()" plain>清除</el-button>
     <el-button @click="create()" plain >{{createUserOper}}</el-button>
+    <el-button @click="todo()" plain >Todo</el-button>
   </el-row>
   <el-table
       :data="users"
@@ -41,14 +42,17 @@
 
   </div>
   <UserCreate :show="showCreate" @createdUser="createdUser" @cancel="cancel2" :arr="arr"/>
+  <Todo :show="showTodo"></Todo>
 </template>
 
 <script>
   import { getUsers } from "@/request/user"
   import UserCreate from "@/components/UserCreate";
+  import Todo from "@/components/todo/Todo";
 
   export default {
     name: "User",
+
     data() {
       return {
         users: [],
@@ -65,10 +69,12 @@
               "age":2
             },
         ],
-        message:"hello"
+        message:"hello",
+        showTodo: false,
       }
     },
     components:{
+      Todo,
       UserCreate,
     },
 
@@ -106,6 +112,11 @@
       cancel2(value){
         console.log("====> cancel val: ", value)
         this.showCreate = value;
+      },
+      todo(){
+        console.log("------>")
+        // this.$router.push({path: "/todo"});
+        this.showTodo = true;
       }
 
     }
