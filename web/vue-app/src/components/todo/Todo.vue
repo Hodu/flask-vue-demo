@@ -9,8 +9,30 @@
           <el-button type="text" @click="all" autofocus>all</el-button>
           <el-button type="text" @click="active">active</el-button>
           <el-button type="text" @click="completed">completed</el-button>
+<!--          <el-button type="text" @click="exportTodo">export</el-button>-->
+          <el-button type="text" @click="dialogVisible = true">export</el-button>
         </div>
       </div>
+    </div>
+
+    <div class="todo-download-dialog">
+    <el-dialog
+      title="download todos"
+      v-model="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <el-form>
+        <el-form-item label="文件名称">
+          <el-input v-model="todoFileName" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="download">确 定</el-button>
+        </span>
+      </template>
+    </el-dialog>
     </div>
   </div>
 </template>
@@ -18,6 +40,7 @@
 <script>
 import TodoInput from "@/components/todo/TodoInput";
 import TodoShowBox from "@/components/todo/TodoShowBox";
+import {exportCSV} from '@/utils/export';
 
 export default {
   name: "Todo",
@@ -46,7 +69,9 @@ export default {
     return {
       popupShow: false,
       testPlaceHolder: "what do you want todo...",
-      contents: []
+      contents: [],
+      dialogVisible: false,
+      todoFileName:""
     };
   },
   methods: {
@@ -66,6 +91,28 @@ export default {
     },
     completed(){
       console.log("completed---->", this.contents)
+    },
+    exportTodo(){
+      const fields = ['id','content'];
+      let rows = [];
+      this.contents.forEach((a, index) => {
+        rows.push({"id":index, "content": a.content})
+      });
+      console.log("----> rows: ", rows)
+      return exportCSV(rows, fields, "todo.css");
+    },
+    handleClose() {
+      this.dialogVisible = false;
+    },
+    download() {
+      this.dialogVisible = false;
+      const fields = ['id','content'];
+      let rows = [];
+      this.contents.forEach((a, index) => {
+        rows.push({"id":index, "content": a.content})
+      });
+      console.log("-----<download ", this.todoFileName)
+      return exportCSV(rows, fields, this.todoFileName);
     }
   }
 }
@@ -102,19 +149,16 @@ export default {
     }
   }
 
-  .header {
-    height: 20px;
+  .todo-download-dialog {
 
-    .close {
-      color: #444;
-      width: 20px;
-      height: 20px;
-      background: red;
-      float: right;
-
-      &::before {
-        content: "X";
-      }
+    /deep/.el-form-item {
+      display: flex;
+    }
+    /deep/.el-form-item__label{
+      width: 100px;
+    }
+    /deep/.el-form-item__content{
+      width: 100%;
     }
   }
 }
